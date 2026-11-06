@@ -10,8 +10,15 @@ async function fetchGitHubUser(username) {
   const encodedUsername = encodeURIComponent(username);
   const url = `https://api.github.com/users/${encodedUsername}`;
   const response = await axios.get(url, { timeout: 10000 });
+  const user = response.data;
 
-  console.log(response.data);
+  console.log(`ユーザー名: ${user.login}`);
+  console.log(`名前: ${user.name || '未設定'}`);
+  console.log(`自己紹介: ${user.bio || '未設定'}`);
+  console.log(`公開リポジトリ数: ${user.public_repos}`);
+  console.log(`フォロワー数: ${user.followers}`);
+  console.log(`フォロー数: ${user.following}`);
+  console.log(`プロフィールURL: ${user.html_url}`);
 }
 
 rl.question('GitHubのユーザー名を入力してください：', async (input) => {
