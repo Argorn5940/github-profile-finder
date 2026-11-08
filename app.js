@@ -68,3 +68,4 @@ if (require.main === module) {
 
 // テストから利用する関数を公開する
 module.exports = { fetchGitHubUser, getApiErrorMessage };
+
